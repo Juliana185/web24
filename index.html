@@ -1,3 +1,15 @@
+<?php
+// Стартуем сессию для использования Cookies
+session_start();
+
+// Получаем ошибки и значения из Cookies
+$errors = isset($_COOKIE['form_errors']) ? json_decode($_COOKIE['form_errors'], true) : [];
+$values = isset($_COOKIE['form_values']) ? json_decode($_COOKIE['form_values'], true) : [];
+setcookie("form_errors", "", time() - 3600, "/");
+setcookie("form_values", "", time() - 3600, "/");
+?>
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -6,44 +18,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<form action="submit.php" method="POST">
-    <?php
-    $errors = isset($_COOKIE['form_errors']) ? json_decode($_COOKIE['form_errors'], true) : [];
-    $values = isset($_COOKIE['form_values']) ? json_decode($_COOKIE['form_values'], true) : [];
-    setcookie("form_errors", "", time() - 3600, "/");
-    setcookie("form_values", "", time() - 3600, "/");
-    ?>
+    <form action="submit.php" method="POST">
+        <label>ФИО:
+            <input type="text" name="name" value="<?= $values['name'] ?? '' ?>">
+            <span class="error"><?= $errors['name'] ?? '' ?></span>
+        </label>
 
-    <label>ФИО:
-        <input type="text" name="name" value="<?= $values['name'] ?? '' ?>">
-        <span style="color:red;"><?= $errors['name'] ?? '' ?></span>
-    </label>
+        <label>Телефон:
+            <input type="tel" name="phone" value="<?= $values['phone'] ?? '' ?>">
+            <span class="error"><?= $errors['phone'] ?? '' ?></span>
+        </label>
 
-    <label>Телефон:
-        <input type="tel" name="phone" value="<?= $values['phone'] ?? '' ?>">
-        <span style="color:red;"><?= $errors['phone'] ?? '' ?></span>
-    </label>
+        <label>Email:
+            <input type="email" name="email" value="<?= $values['email'] ?? '' ?>">
+            <span class="error"><?= $errors['email'] ?? '' ?></span>
+        </label>
 
-    <label>Email:
-        <input type="email" name="email" value="<?= $values['email'] ?? '' ?>">
-        <span style="color:red;"><?= $errors['email'] ?? '' ?></span>
-    </label>
+        <label>Дата рождения:
+            <input type="date" name="birthdate" value="<?= $values['birthdate'] ?? '' ?>">
+            <span class="error"><?= $errors['birthdate'] ?? '' ?></span>
+        </label>
 
-    <label>Дата рождения:
-        <input type="date" name="birthdate" value="<?= $values['birthdate'] ?? '' ?>">
-        <span style="color:red;"><?= $errors['birthdate'] ?? '' ?></span>
-    </label>
+        <label>Пол:
+            <input type="radio" name="gender" value="male" <?= (isset($values['gender']) && $values['gender'] == 'male') ? 'checked' : '' ?>> Мужской
+            <input type="radio" name="gender" value="female" <?= (isset($values['gender']) && $values['gender'] == 'female') ? 'checked' : '' ?>> Женский
+            <span class="error"><?= $errors['gender'] ?? '' ?></span>
+        </label>
 
-    <label>Пол:
-        <input type="radio" name="gender" value="male" <?= (isset($values['gender']) && $values['gender'] == 'male') ? 'checked' : '' ?>> Мужской
-        <input type="radio" name="gender" value="female" <?= (isset($values['gender']) && $values['gender'] == 'female') ? 'checked' : '' ?>> Женский
-        <span style="color:red;"><?= $errors['gender'] ?? '' ?></span>
-    </label>
+        <label>Биография:
+            <textarea name="bio"><?= $values['bio'] ?? '' ?></textarea>
+            <span class="error"><?= $errors['bio'] ?? '' ?></span>
+        </label>
 
-    <label>Биография:
-        <textarea name="bio"><?= $values['bio'] ?? '' ?></textarea>
-        <span style="color:red;"><?= $errors['bio'] ?? '' ?></span>
-    </label>
-
-    <button type="submit">Сохранить</button>
-</form>
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>
