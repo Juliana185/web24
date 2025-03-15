@@ -20,18 +20,18 @@ setcookie("form_values", "", time() - 3600, "/");
 <body>
     <form action="submit.php" method="POST">
         <label>ФИО:
-            <input type="text" name="name" value="<?= $values['name'] ?? '' ?>">
-            <span class="error">Введите ФИО</span>
+            <input type="text" name="name" value="Введите ФИО">
+            <span class="error"><?= $errors['name></span>
         </label>
 
         <label>Телефон:
-            <input type="tel" name="phone" value="<?= $values['phone'] ?? '' ?>">
-            <span class="error">Введите номер телефона</span>
+            <input type="tel" name="phone" value="Введите номер телефона">
+            <span class="error"><?= $errors['phone'] ?? '' ?></span>
         </label>
 
         <label>Email:
-            <input type="email" name="email" value="<?= $values['email'] ?? '' ?>">
-            <span class="error">Введите почту</span>
+            <input type="email" name="email" value="Введите почту">
+            <span class="error"><?= $errors['email'] ?? '' ?></span>
         </label>
 
         <label>Дата рождения:
@@ -46,7 +46,7 @@ setcookie("form_values", "", time() - 3600, "/");
         </label>
 
         <label>Биография:
-            <textarea name="bio"><?= $values['bio'] ?? '' ?></textarea>
+            <textarea name="bio">Расскажите о себе</textarea>
             <span class="error"><?= $errors['bio'] ?? '' ?></span>
         </label>
 
