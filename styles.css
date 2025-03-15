@@ -1,0 +1,88 @@
+/* Центрирование формы */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4e1ff; /* Светло-сиреневый фон */
+    color: #4b0082; /* Темно-фиолетовый текст */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Высота на весь экран */
+    margin: 0;
+}
+
+/* Контейнер формы */
+form {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(75, 0, 130, 0.3); /* Тень фиолетового цвета */
+    border: 3px solid #ba55d3; /* Фиолетовая рамка */
+    width: 100%;
+    max-width: 400px; /* Ограничение по ширине */
+    text-align: center;
+}
+
+/* Поля формы */
+label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #ba55d3; /* Средний фиолетовый */
+    border-radius: 5px;
+    background: #fff0ff; /* Светло-сиреневый */
+    color: #4b0082; /* Темно-фиолетовый */
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #8a2be2; /* Темно-фиолетовый при фокусе */
+    box-shadow: 0 0 7px rgba(138, 43, 226, 0.5);
+}
+
+/* Кнопка */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #8a2be2; /* Темно-фиолетовый */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #6a0dad; /* Более темный фиолетовый */
+}
+
+/* Ошибки */
+.error {
+    color: #d70040; /* Малиновый цвет ошибок */
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Радиокнопки и чекбоксы */
+fieldset {
+    border: 2px solid #ba55d3;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+}
+
+legend {
+    font-weight: bold;
+    color: #4b0082;
+}
