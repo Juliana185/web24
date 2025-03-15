@@ -21,17 +21,17 @@ setcookie("form_values", "", time() - 3600, "/");
     <form action="submit.php" method="POST">
         <label>ФИО:
             <input type="text" name="name" value="<?= $values['name'] ?? '' ?>">
-            <span class="error"><?= $errors['name'] ?? '' ?></span>
+            <span class="error">Введите ФИО</span>
         </label>
 
         <label>Телефон:
             <input type="tel" name="phone" value="<?= $values['phone'] ?? '' ?>">
-            <span class="error"><?= $errors['phone'] ?? '' ?></span>
+            <span class="error">Введите номер телефона</span>
         </label>
 
         <label>Email:
             <input type="email" name="email" value="<?= $values['email'] ?? '' ?>">
-            <span class="error"><?= $errors['email'] ?? '' ?></span>
+            <span class="error">Введите почту</span>
         </label>
 
         <label>Дата рождения:
