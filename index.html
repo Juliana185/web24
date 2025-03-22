@@ -1,56 +1,52 @@
-<?php
-// Стартуем сессию для использования Cookies
-session_start();
-
-// Получаем ошибки и значения из Cookies
-$errors = isset($_COOKIE['form_errors']) ? json_decode($_COOKIE['form_errors'], true) : [];
-$values = isset($_COOKIE['form_values']) ? json_decode($_COOKIE['form_values'], true) : [];
-setcookie("form_errors", "", time() - 3600, "/");
-setcookie("form_values", "", time() - 3600, "/");
-?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>web24</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <form action="submit.php" method="POST">
-        <label>ФИО:
-            <input type="text" name="name" value="Введите ФИО">
-            <span class="error"><?= $errors['name></span>
-        </label>
+  <div class="container">
+    <header>Регистрация</header>
+    <form action="#">
+      <div class="field name-field">
+        <div class="input-field">
+          <input type="text" placeholder="Введите ваше ФИО" class="name" required />
+        </div>
+        <span class="error name-error">
+          <i class="bx bx-error-circle error-icon"></i>
+          <p class="error-text">ФИО должно содержать только английские буквы</p>
+        </span>
+      </div>
 
-        <label>Телефон:
-            <input type="tel" name="phone" value="Введите номер телефона">
-            <span class="error"><?= $errors['phone'] ?? '' ?></span>
-        </label>
+      <div class="field email-field">
+        <div class="input-field">
+          <input type="email" placeholder="Введите вашу почту" class="email" required />
+        </div>
+        <span class="error email-error">
+          <i class="bx bx-error-circle error-icon"></i>
+          <p class="error-text">Неправильная почта</p>
+        </span>
+      </div>
 
-        <label>Email:
-            <input type="email" name="email" value="Введите почту">
-            <span class="error"><?= $errors['email'] ?? '' ?></span>
-        </label>
+      <div class="field phone-field">
+        <div class="input-field">
+          <input type="tel" placeholder="Введите ваш номер телефона" class="phone" required />
+        </div>
+        <span class="error phone-error">
+          <i class="bx bx-error-circle error-icon"></i>
+          <p class="error-text">Неправильный номер телефона</p>
+        </span>
+      </div>
 
-        <label>Дата рождения:
-            <input type="date" name="birthdate" value="<?= $values['birthdate'] ?? '' ?>">
-            <span class="error"><?= $errors['birthdate'] ?? '' ?></span>
-        </label>
-
-        <label>Пол:
-            <input type="radio" name="gender" value="male" <?= (isset($values['gender']) && $values['gender'] == 'male') ? 'checked' : '' ?>> Мужской
-            <input type="radio" name="gender" value="female" <?= (isset($values['gender']) && $values['gender'] == 'female') ? 'checked' : '' ?>> Женский
-            <span class="error"><?= $errors['gender'] ?? '' ?></span>
-        </label>
-
-        <label>Биография:
-            <textarea name="bio">Расскажите о себе</textarea>
-            <span class="error"><?= $errors['bio'] ?? '' ?></span>
-        </label>
-
-        <button type="submit">Сохранить</button>
+      <div class="input-field button">
+        <input type="submit" value="Зарегистрироваться" />
+      </div>
     </form>
+  </div>
+
+  <script src="./script2.js"></script>
 </body>
 </html>
